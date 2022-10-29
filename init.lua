@@ -36,6 +36,32 @@ local config = {
                 -- duskfox = { -- a table of overrides/changes to the duskfox theme
                 --   Normal = { bg = "#000000" },
                 -- },
+                --
+                -- set hightlight for all themes
+                -- use a function override to let us use lua to retrive colors from highlight groups
+                -- there is no default table so we don't need to put a parameter for this function
+                init = function()
+                        local normal = astronvim.get_hlgroup "Normal"
+                        local fg, bg = normal.fg, normal.bg
+                        local bg_alt = astronvim.get_hlgroup("Visual").bg
+                        local green = astronvim.get_hlgroup("String").fg
+                        local red = astronvim.get_hlgroup("Error").fg
+                        -- return a table of highlights for telescope based on colors gotten from highlight groups
+                        return {
+                                TelescopeBorder = { fg = bg_alt, bg = bg },
+                                TelescopeNormal = { bg = bg },
+                                TelescopePreviewBorder = { fg = bg, bg = bg },
+                                TelescopePreviewNormal = { bg = bg },
+                                TelescopePreviewTitle = { fg = bg, bg = green },
+                                TelescopePromptBorder = { fg = bg_alt, bg = bg_alt },
+                                TelescopePromptNormal = { fg = fg, bg = bg_alt },
+                                TelescopePromptPrefix = { fg = red, bg = bg_alt },
+                                TelescopePromptTitle = { fg = bg, bg = red },
+                                TelescopeResultsBorder = { fg = bg, bg = bg },
+                                TelescopeResultsNormal = { bg = bg },
+                                TelescopeResultsTitle = { fg = bg, bg = bg },
+                        }
+                end
         },
 
         -- set vim options here (vim.<first_key>.<second_key> =  value)
@@ -227,7 +253,15 @@ local config = {
                         --     require("lsp_signature").setup()
                         --   end,
                         -- },
-                        { 'rebelot/kanagawa.nvim' }
+                        { 'rebelot/kanagawa.nvim' },
+
+                        ['nvim-telescope/telescope.nvim'] = {
+                                config = function()
+                                        require("configs.telescope")
+                                        require("user.plugins.telescope")
+                                end
+                        },
+                        ['nvim-telescope/telescope-file-browser.nvim'] = {}
 
                         -- We also support a key value style plugin definition similar to NvChad:
                         -- ["ray-x/lsp_signature.nvim"] = {
@@ -323,6 +357,8 @@ local config = {
                 --   },
                 -- }
         end,
+
+
 }
 
 return config
