@@ -70,17 +70,12 @@ local config = {
 
         -- Set dashboard header
         header = {
-                " █████  ███████ ████████ ██████   ██████",
-                "██   ██ ██         ██    ██   ██ ██    ██",
-                "███████ ███████    ██    ██████  ██    ██",
-                "██   ██      ██    ██    ██   ██ ██    ██",
-                "██   ██ ███████    ██    ██   ██  ██████",
-                " ",
-                "    ███    ██ ██    ██ ██ ███    ███",
-                "    ████   ██ ██    ██ ██ ████  ████",
-                "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-                "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-                "    ██   ████   ████   ██ ██      ██",
+                " █████  ███████ ████████ ██████   ██████    ███    ██ ██    ██ ██ ███    ███",
+                "██   ██ ██         ██    ██   ██ ██    ██   ████   ██ ██    ██ ██ ████  ████",
+                "███████ ███████    ██    ██████  ██    ██   ██ ██  ██ ██    ██ ██ ██ ████ ██",
+                "██   ██      ██    ██    ██   ██ ██    ██   ██  ██ ██  ██  ██  ██ ██  ██  ██",
+                "██   ██ ███████    ██    ██   ██  ██████    ██   ████   ████   ██ ██      ██",
+                "",
         },
 
         -- Default theme configuration
@@ -206,6 +201,7 @@ local config = {
                         ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
                         ["<leader>bv"] = { "<cmd>vsplit<cr>", desc = "Vertical Split" },
                         ["<leader>bh"] = { "<cmd>split<cr>", desc = "Horizontal Split" },
+                        ["<leader>bq"] = { "<cmd>close<cr>", desc = "Close Split" },
                         -- quick save
                         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
                 },
